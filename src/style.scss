@@ -1,0 +1,602 @@
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+      @content;
+    }
+  }
+  @mixin tablet {
+    @media screen and (max-width: 768px) {
+      @content;
+    }
+  }
+  @mixin laptop {
+    @media screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  //Color theme imports
+  //  @import 'Colours/variables.scss';
+  //  @import 'Colours/variables-light.scss';
+  //  @import 'Colours/variables-pink.scss';
+  //  @import 'Colours/variables-green.scss';
+  //  @import 'Colours/variables-blue.scss';
+  //  @import 'Colours/variables-dark.scss';
+  //its fucked its so messed up I HATE CSS
+
+  :root {
+    --Primary: #2e3440;
+    --Secondary: #3b4252;
+    --Tertiary: #434c5e;
+    --Accessory: #4c566a;
+    --Compliment: #D8DEE9;
+    --Effect: #E5E9F0;
+    --Penultimate: #ECEFF4;
+    --Base: white;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+  
+  //prevent ugly React router dom links hack. May cause isssues.
+  a{
+    text-decoration: none;
+  }
+
+  .formContainer {
+    //css img
+    background-color: var(--Compliment);
+    opacity: 0.8;
+    background-image:  linear-gradient(30deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(150deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(30deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(150deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(60deg, #81a1c177 25%, transparent 25.5%, transparent 75%, #81a1c177 75%, #81a1c177), linear-gradient(60deg, #81a1c177 25%, transparent 25.5%, transparent 75%, #81a1c177 75%, #81a1c177);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    //end of img
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    .formWrapper {
+      background-color: var(--Base);
+      padding: 20px 60px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+  
+      .logo {
+        color: var(--Primary);
+        font-weight: bold;
+        font-size: 24px;
+      }
+
+      .logo-cont {
+        display: flex;
+        align-items: center;
+      }
+      
+      .logo-img {
+        height: 100px;
+        width: auto;
+        margin-top: -10%;
+        margin-bottom: -30%;
+        //fixes image offset
+        margin-left: 4%;
+      }
+  
+      .title {
+        color: var(--Accessory);
+        font-size: 12px;
+        margin-bottom: -10%;
+      }
+  
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+  
+        input {
+          padding: 15px;
+          border: none;
+          width: 250px;
+          border-bottom: 1px solid var(--Tertiary);
+          &::placeholder {
+            color: var(--Accessory);
+          }
+        }
+        //signup/in button
+        button {
+          background-color: var(--Primary);
+          color: var(--Base);
+          padding: 10px;
+          font-weight: bold;
+          border: none;
+          cursor: pointer;
+        }
+  
+        label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--Accessory);
+          font-size: 12px;
+          cursor: pointer;
+  
+          img {
+            width: 32px;
+          }
+        }
+      }
+      p {
+        color: var(--Accessory);
+        font-size: 12px;
+        margin-top: 10px;
+      }
+    }
+  }
+  
+  .home {
+
+    //css img
+    background-color: var(--Base);
+    opacity: 0.8;
+    background-image:  linear-gradient(30deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(150deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(30deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(150deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(60deg, #81a1c177 25%, transparent 25.5%, transparent 75%, #81a1c177 75%, #81a1c177), linear-gradient(60deg, #81a1c177 25%, transparent 25.5%, transparent 75%, #81a1c177 75%, #81a1c177);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    //end of css img
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+
+    .container {
+      border: 1px solid var(--Base);
+      background: var(--Primary);
+      border-radius: 10px;
+      width: 95%;
+      height: 95%;
+      display: flex;
+      overflow: hidden;
+      @include tablet {
+       width: 90%;
+      }
+  
+      .sidebar {
+        flex: 0.6;
+        background-color: var(--Primary);
+        position: relative;
+        
+        .navbar {
+          display: flex;
+          align-items: center;
+          background-color: var(--Primary);
+          padding-top: 10%;
+          margin: auto;
+          justify-content: center;
+          color: --Base;
+  
+          .logo {
+            font-weight: bold;
+            @include tablet {
+              display: none;
+            }
+          }
+
+          .user {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            align-items: center;
+
+            //FORCED title case names dont forget
+            .username{
+              text-transform: lowercase;
+              font-weight:700;
+              font-size: xx-large;
+            }
+            .username::first-letter{
+              text-transform: uppercase;
+            }
+
+            img {
+              background-color: var(--Base);
+              height: 5em;
+              width: 5em;
+              border-radius: 50%;
+              object-fit: cover;
+              margin-left: 10%;
+              margin-top: 10%;
+            }   
+          }
+        }
+        .search {
+          border-bottom: 1px solid gray;
+  
+          .searchForm {
+            padding: 10px;
+  
+            input {
+              background-color: transparent;
+              border: none;
+              color: white;
+              outline: none;
+  
+              &::placeholder {
+                color: lightgray;
+              }
+            }
+          }
+        }
+  
+        .userChat {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: white;
+          cursor: pointer;
+  
+          &:hover {
+            background-color: var(--Primary);
+          }
+  
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+  
+          .userChatInfo {
+            span {
+              font-size: 18px;
+              font-weight: 500;
+            }
+            p {
+              font-size: 14px;
+              color: lightgray;
+            }
+          }
+        }
+      }
+      
+      .chat {
+        flex: 2;
+  
+        .chatInfo {
+          height: 50px;
+          background-color: var(--Tertiary);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          color: White;
+        }
+  
+        .chatIcons {
+          display: flex;
+          gap: 10px;
+  
+          img {
+            height: 24px;
+            cursor: pointer;
+          }
+        }
+  
+        .messages {
+          background-color: #000000;
+          background-size: 80px 80px;
+          padding: 10px;
+          height: calc(100% - 160px);
+          overflow: scroll;
+  
+          .message {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+  
+            .messageInfo {
+              display: flex;
+              flex-direction: column;
+              color: gray;
+              font-weight: 300;
+  
+              img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+            }
+            .messageContent {
+              max-width: 80%;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+  
+              p {
+                background-color: white;
+                padding: 10px 20px;
+                border-radius: 0px 10px 10px 10px;
+                max-width: max-content;
+              }
+  
+              img {
+                width: 50%;
+              }
+            }
+  
+            &.owner {
+              flex-direction: row-reverse;
+  
+              .messageContent {
+                align-items: flex-end;
+                p {
+                  background-color: var(--Accessory);
+                  color: white;
+                  border-radius: 10px 0px 10px 10px;
+                }
+              }
+            }
+          }
+        }
+  
+        .input {
+          
+          height: 50px;
+          background-color: white;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+  
+          input {
+            
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #2f2d52;
+            font-size: 18px;
+  
+            &::placeholder {
+              color: lightgray;
+            }
+          }
+  
+          .send {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+  
+            img {
+              height: 24px;
+              cursor: pointer;
+            }
+  
+            button {
+              border: none;
+              padding: 10px 15px;
+              color: white;
+              background-color: var(--Accessory);
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+    .flex-container{
+      display:flex;
+      margin: 0 auto;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flex-item{
+      background-color: --Tertiary;
+      width: 50%;
+      max-height: min-content;
+      text-align: center;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 0.5rem;
+      border-style: solid;
+    }
+
+    .settingstxt{
+      color: white;
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-decoration: none;
+    }
+
+    .close{
+      color:#000000;
+      font-size: xx-large;
+      background: --Accessory;
+      min-width: 5rem;
+      min-height: 5rem;
+      border-radius: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .close-text {
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+    }
+
+
+    .footer{
+      margin: 10px;
+      color:lightgray;
+      max-width: 60%;
+      text-align: center;
+    }
+
+    .logout{
+      background-color: orangered;
+      cursor: pointer;
+    }
+
+    .title{
+      font-size: xxx-large ;
+      padding: 2rem;
+    }
+    
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      max-width: 80%;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-header h2 {
+      margin: 0;
+    }
+    
+    .modal-header button {
+      border: none;
+      background-color: transparent;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+
+.homeP {
+  background-color: var(--Base);
+  opacity: 0.8;
+  background-image:  linear-gradient(30deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(150deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(30deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(150deg, #81a1c1 12%, transparent 12.5%, transparent 87%, #81a1c1 87.5%, #81a1c1), linear-gradient(60deg, #81a1c177 25%, transparent 25.5%, transparent 75%, #81a1c177 75%, #81a1c177), linear-gradient(60deg, #81a1c177 25%, transparent 25.5%, transparent 75%, #81a1c177 75%, #81a1c177);
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerP {
+  border: 1px solid var(--Base);
+  background: var(--Primary);
+  border-radius: 10px;
+  width: 95%;
+  height: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr;
+  overflow: hidden;
+  @include tablet {
+    width: 90%;
+  }
+}
+
+.prof-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
+  color: var(--Effect)
+}
+
+.pfp {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.interests-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / span 3;
+  grid-row: 2 / span 1;
+  color: var(--Compliment);
+}
+
+.bio-form input {
+  height: 5em;
+  font-size: 1.2em;
+  border-radius: 0.5em;
+  border: 1px solid var(--Compliment);
+  background-color: var(--Tertiary);
+  margin-top: 0.5em;
+  width: 100%;
+  color: var(--Compliment);
+}
+
+.bio-form input::placeholder {
+  font-style: italic;
+  color: white;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+select {
+  appearance: none;
+  background-color: var(--Accessory);
+  border: 1px solid var(--Compliment);
+  border-radius: 0.5em;
+  font-size: 1em;
+  padding: 8px;
+  margin: 0.4em;
+  width: 100%;
+  color: var(--Compliment)
+}
+
+option {
+  padding: 8px;
+  color: var(--Compliment)
+}
+
+button {
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: none;
+  left: 50%;
+  right: 50%;
+}
+
+button[type="submit"] {
+  margin: 20px auto;
+  display: block;
+  padding: 10px 20px;
+  border: none;
+  left: 50%;
+  right: 50%;
+  border-radius: 0.5em;
+  background-color: var(--Tertiary);
+  color: var(--Compliment);
+}
